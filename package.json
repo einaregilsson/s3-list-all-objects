@@ -1,0 +1,27 @@
+{
+  "name": "s3-list-all-objects",
+  "version": "0.1.0",
+  "description": "List all objects in a S3 bucket, handling paging automatically.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/einaregilsson/s3-list-all-objects.git"
+  },
+  "keywords": [
+    "s3",
+    "list",
+    "aws"
+  ],
+  "author": "Einar Egilsson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/einaregilsson/s3-list-all-objects/issues"
+  },
+  "homepage": "https://github.com/einaregilsson/s3-list-all-objects#readme",
+  "dependencies": {
+    "aws-sdk": "^2.10.0"
+  }
+}
