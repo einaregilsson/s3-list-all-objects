@@ -15,7 +15,7 @@
     "list",
     "aws"
   ],
-  "author": "Einar Egilsson",
+  "author": "Einar Egilsson <einar@einaregilsson.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/einaregilsson/s3-list-all-objects/issues"
