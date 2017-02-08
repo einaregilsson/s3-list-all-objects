@@ -27,12 +27,27 @@ so you don't have to.
         console.log('Got ' + data.length + ' objects with prefix.');
     });
 
+    //Pass options to the S3 constructor to control the operations.
+    //You can pass credential in here, if you don't the standard AWS environment variables are used.
+    //See http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#constructor-property for details
+    
+    var s3options = {
+        accessKeyId : 'NOTAREALACCESSKEYID',
+        secretAccessKey : 'NOTAREALSECRETACCESSKEY'
+    };
+
+     // Get with extra s3 options.
+    listAllObjects({ bucket: 'yourbucketname', s3options: s3options}, function(err, data) {
+        console.log('Got ' + data.length + ' objects, first object: ' + JSON.stringify(data[0]));
+    });
+   
+
 The options parameter has the following keys:
     
     {
-        bucket    : 'bucketname', **required** //Name of bucket to list objects from
-        prefix    : 'foldername/', **optional** //Only get keys with this prefix
-        progress  : function(err, data) { }, **optional** //Called when a page of keys is ready. data is { batchNr : <nr>, finalBatch: <true | false>, data : [keys]}
-        s3options : {...} **optional** //Options that are passed directly to the S3 constructor in the AWS SDK. See their documentation for details.
+        bucket    : 'bucketname',  //REQUIRED: Name of bucket to list objects from
+        prefix    : 'foldername/', //OPTIONAL: Only get keys with this prefix
+        progress  : function(err, data) { }, //OPTIONAL: Called when a page of keys is ready. data is { batchNr : <nr>, finalBatch: <true | false>, data : [keys]}
+        s3options : {...} //OPTIONAL: Options that are passed directly to the S3 constructor in the AWS SDK. See their documentation for details.
 
     }
