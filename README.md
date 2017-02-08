@@ -19,7 +19,8 @@ so you don't have to.
 
     // Get a callback with each page of objects as they come in
     listAllObjects({ bucket: 'yourbucketname, progress: function(err, data) {
-        console.log('Got batch ' + data.batchNr + ', isFinal: ' + data.finalBatch + ', object count: ' + data.data.length);
+        console.log('Got batch ' + data.batchNr + ', isFinal: ' + data.finalBatch + 
+                    ', object count: ' + data.data.length);
     }});
 
     // Get prefixed objects
@@ -30,7 +31,7 @@ so you don't have to.
     //Pass options to the S3 constructor to control the operations.
     //You can pass credential in here, if you don't the standard AWS environment variables are used.
     //See http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#constructor-property for details
-    
+
     var s3options = {
         accessKeyId : 'NOTAREALACCESSKEYID',
         secretAccessKey : 'NOTAREALSECRETACCESSKEY'
@@ -46,8 +47,15 @@ The options parameter has the following keys:
     
     {
         bucket    : 'bucketname',  //REQUIRED: Name of bucket to list objects from
+        
         prefix    : 'foldername/', //OPTIONAL: Only get keys with this prefix
-        progress  : function(err, data) { }, //OPTIONAL: Called when a page of keys is ready. data is { batchNr : <nr>, finalBatch: <true | false>, data : [keys]}
-        s3options : {...} //OPTIONAL: Options that are passed directly to the S3 constructor in the AWS SDK. See their documentation for details.
+        
+        progress  : function(err, data) { }, //OPTIONAL: Called when a page of keys is ready.
+                                             // data is { batchNr : <nr>, finalBatch: <true | false>, data : [keys]}
+        
+        s3options : {...} //OPTIONAL: Options that are passed directly to the S3 constructor in
+                          // the AWS SDK. See their documentation for details.
 
     }
+
+You must pass in at least one of **callback** or **options.progress**, you can also pass both in.
