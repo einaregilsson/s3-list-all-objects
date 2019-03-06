@@ -18,13 +18,13 @@ so you don't have to.
     });
 
     // Get a callback with each page of objects as they come in
-    listAllObjects({ bucket: 'yourbucketname, progress: function(err, data) {
+    listAllObjects({ bucket: 'yourbucketname', progress: function(err, data) {
         console.log('Got batch ' + data.batchNr + ', isFinal: ' + data.finalBatch + 
                     ', object count: ' + data.data.length);
     }});
 
     // Get prefixed objects
-    listAllObjects({ bucket: 'yourbucketname, prefix : 'foldername/'}, function(err, data) {
+    listAllObjects({ bucket: 'yourbucketname', prefix : 'foldername/'}, function(err, data) {
         console.log('Got ' + data.length + ' objects with prefix.');
     });
 
